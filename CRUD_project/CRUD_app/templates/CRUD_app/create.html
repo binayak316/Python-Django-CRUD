@@ -1,0 +1,16 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+<title>Create</title>
+{% endblock title %}
+
+{% block content %}
+
+<h1 style="text-align:center;">Add New Employee Information</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p }}
+    <input type="submit" class="btn btn-dark">
+</form>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+
+<title style="background-color:grey;text-align:center;">Upadate your list</title>
+
+{% endblock title %}
+
+
+
+{% block content %}
+
+
+<h1 style="text-align:center;background-color:grey;">Update Employee Infromation</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-dark" value="Update">
+</form>
+
+{% endblock content %}

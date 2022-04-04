@@ -1,0 +1,26 @@
+{% extends "includes/base.html" %}
+{% block title %}
+<title>Delete</title>
+{% endblock title %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <br>
+    <div class="alert alert-danger" role="alert">
+        Are you sure to delete "{{ employee.emp_name }}"?
+<!--   yeha employee.emp_name kahabata ako vane
+ 1: views.py ma employee var declare gareko xa jasle employee ko objects get garxa
+ 2: teslai context dictionary ma key pari value diyera render request ma context vanera dekhaiyo
+ 3:tehi employee nai delete.html ko {{ employee.emp_name }} ma  use gareko 
+ -->
+    </div>
+    <p>
+        <a href="{% url 'employee-list' %}">Cancel</a>
+    </p>
+    <p>
+        <input type="submit" class="btn btn-danger" value="Confirm">
+    </p>
+</form>
+
+{% endblock content %}

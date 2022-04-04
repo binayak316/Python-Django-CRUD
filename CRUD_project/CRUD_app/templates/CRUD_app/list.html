@@ -1,0 +1,57 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+
+<title>Employee List</title>
+
+{% endblock title %}
+
+{% block body %}
+
+<h1 style="text-align:center; margin-bottom: 25px;background-color:grey;">List Of The Employees</h1>
+{% endblock body %}
+
+ {% block content %}
+<!--div.container vanne base.html ko container division ma yo sab table render hune
+uta block/endblock vitra extend gareko ho yeta ko block/endblock
+-->
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Role</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for employee in emp %}
+                <tr>
+                    <th scope="row">{{employee.emp_name}}</th>
+<!--                    th deko name lai black banauna-->
+                    <!--     employee.emp_name vaneko chai
+                      { for employee in emp } template tag ko employee ko
+                      ani emp_name vaneko models or database ko value taneko -->
+                    <td>{{employee.emp_email}}</td>
+                    <td>{{employee.emp_contact}}</td>
+                    <td>{{employee.emp_role}}</td>
+                    <td>{{employee.emp_salary}}</td>
+                    <td>
+                        <a href="{% url 'update-employee' employee.id %}">Update</a>
+                        <a href="{% url 'delete-employee' employee.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <a href="{% url 'create-employee' %}">
+            <button type="button" class="btn btn-primary">Add New</button>
+        </a>
+    </div>
+
+ {%  endblock content  %}
